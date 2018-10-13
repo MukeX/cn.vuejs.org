@@ -65,17 +65,20 @@ vm.a // => 3
 vm.b = 'hi'
 ```
 
-那么对 `b` 的改动将不会触发任何视图的更新。如果你知道你会在晚些时候需要一个属性，但是一开始它为空或不存在，那么你仅需要设置一些初始值。比如：
+事实上无论是
 
 ```js
-data: {
-  newTodoText: '',
-  visitCount: 0,
-  hideCompletedTodos: false,
-  todos: [],
-  error: null
-}
+vm.b = 'hi'
 ```
+
+还是
+
+```
+data.b = 'hi'
+```
+
+都会触发视图的更新
+
 
 这里唯一的例外是使用 `Object.freeze()`，这会阻止修改现有的属性，也意味着响应系统无法再*追踪*变化。
 
